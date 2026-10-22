@@ -1,9 +1,19 @@
 /*
  * site.css — Shared design system
- * Aesthetic: Industrial-Clean
- * Palette: Frame-matched greys + Signal Yellow accent
- * Fonts: Clash Display (headings) + Cabinet Grotesk (body)
+ * Palette: neutral greys + Signal Yellow accent (Status: offen, siehe brand/visuell.md)
+ * Font: Archivo, self-hosted (OFL) — keine externen Font-Server
  */
+
+/* ── Font ───────────────────────────────────────────────── */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  src: url('fonts/archivo-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 
 /* ── Tokens ─────────────────────────────────────────────── */
 :root {
@@ -15,7 +25,7 @@
   --border-heavy: rgba(0,0,0,0.18);
 
   --text:         #151412;
-  --text-muted:   #6b6a67;
+  --text-muted:   #5f5e5b;   /* ≥ 4.5:1 auf --bg (WCAG AA) */
   --text-faint:   #a8a7a4;
   --text-inv:     #f5f4f0;
 
@@ -24,8 +34,8 @@
   --accent-dark:  #c89800;
   --accent-text:  #151412;
 
-  --font-display: 'Clash Display', 'DM Sans', sans-serif;
-  --font-body:    'Cabinet Grotesk', 'DM Sans', sans-serif;
+  --font-display: 'Archivo', system-ui, sans-serif;
+  --font-body:    'Archivo', system-ui, sans-serif;
 
   --radius-sm:  4px;
   --radius-md:  8px;
@@ -40,6 +50,7 @@
 /* ── Reset ───────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { font-size: 16px; scroll-behavior: smooth; }
+[id] { scroll-margin-top: calc(var(--nav-h) + 1rem); }
 body {
   font-family: var(--font-body);
   background: var(--bg);
@@ -174,11 +185,13 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   z-index: 199;
   transform: translateY(-8px);
   opacity: 0;
-  transition: transform 0.3s var(--ease-out), opacity 0.25s ease;
+  visibility: hidden; /* closed drawer must not catch taps or keyboard focus */
+  transition: transform 0.3s var(--ease-out), opacity 0.25s ease, visibility 0.3s;
 }
 .nav-drawer.open {
   transform: translateY(0);
   opacity: 1;
+  visibility: visible;
 }
 .nav-drawer ul {
   list-style: none;
@@ -197,7 +210,8 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   transition: background 0.15s ease, color 0.15s ease;
 }
 .nav-drawer a:hover, .nav-drawer a.active { background: rgba(0,0,0,0.05); color: var(--text); }
-.nav-drawer .nav-cta { display: block; text-align: center; }
+.nav-drawer .nav-cta { display: block; text-align: center; color: var(--accent-text); }
+.nav-drawer .nav-cta:hover { background: var(--accent-dark); color: var(--accent-text); }
 
 @media (max-width: 680px) {
   .nav-links, .nav-cta { display: none; }
@@ -354,36 +368,10 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   border-color: var(--accent);
 }
 
-/* ── Dark band (USPs / CTA strip) ────────────────────────── */
+/* ── Dark band (CTA strip) ───────────────────────────────── */
 .dark-band {
   background: var(--bg-dark);
   color: var(--text-inv);
-}
-.usp-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-  padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 5vw, 3.5rem);
-  max-width: 1160px;
-  margin: 0 auto;
-}
-.usp-item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-.usp-num {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 600;
-  color: var(--accent);
-  letter-spacing: -0.04em;
-  line-height: 1;
-}
-.usp-label {
-  font-size: 0.85rem;
-  color: rgba(245,244,240,0.55);
-  line-height: 1.45;
 }
 
 /* ── Contact form ────────────────────────────────────────── */
@@ -606,7 +594,8 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   border-bottom: 1px solid var(--border);
 }
 
-/* ── Responsive tweaks ───────────────────────────────────── */
-@media (max-width: 480px) {
-  .usp-row { grid-template-columns: 1fr 1fr; }
+/* ── Reduced motion ──────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
 }

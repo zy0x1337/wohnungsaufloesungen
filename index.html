@@ -4,87 +4,117 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wohnungsauflösungen Wunstorf — Entrümpelung & Haushaltsauflösung</title>
-  <meta name="description" content="Professionelle Wohnungsauflösung, Haushaltsauflösung und Entrümpelung in Wunstorf und Umgebung. Kostenlose Besichtigung, zertifizierte Entsorgung, Wertausgleich." />
-  <link rel="preconnect" href="https://api.fontshare.com" />
-  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet" />
+  <meta name="description" content="Wohnungsauflösung, Haushaltsauflösung und Entrümpelung in Wunstorf und der Region Hannover. Kostenlose Besichtigung, Festpreis, besenreine Übergabe. Tel. 0151 / 501 94 741." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:site_name" content="Stiebeiner Entrümpelung" />
+  <meta property="og:title" content="Wohnungsauflösungen Wunstorf — Entrümpelung & Haushaltsauflösung" />
+  <meta property="og:description" content="Wohnungsauflösung, Haushaltsauflösung und Entrümpelung in Wunstorf und der Region Hannover. Kostenlose Besichtigung, Festpreis, besenreine Übergabe. Tel. 0151 / 501 94 741." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="site.css" />
-  <link rel="stylesheet" href="style.css" />
   <style>
     /* ───────────────────────────────────────────────────
-       HERO INTRO — dark band above animation
+       HERO — nur Typografie, kein Bild.
+       Akzentfarbe nur auf der Handlung (Anrufen).
     ─────────────────────────────────────────────────── */
-    .hero-intro {
-      background: var(--bg-dark);
-      padding: clamp(3.5rem, 7vw, 6rem) clamp(1.25rem, 5vw, 3.5rem) clamp(2rem, 4vw, 3.5rem);
-    }
-    .hero-intro-inner {
+    .hero {
+      padding: clamp(3rem, 9vw, 7.5rem) clamp(1.25rem, 5vw, 3.5rem) clamp(2.5rem, 5vw, 4rem);
       max-width: 1160px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: end;
-      gap: 2rem;
-    }
-    @media (max-width: 580px) {
-      .hero-intro-inner { grid-template-columns: 1fr; }
-    }
-    .hero-eyebrow {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .hero-eyebrow::before {
-      content: '';
-      display: block;
-      width: 18px;
-      height: 2px;
-      background: var(--accent);
     }
     .hero-title {
       font-family: var(--font-display);
-      font-size: clamp(2.4rem, 6vw, 4.8rem);
-      font-weight: 600;
-      line-height: 1.03;
+      font-size: clamp(2.1rem, 6.2vw, 5.25rem);
+      font-weight: 700;
+      font-stretch: 92%;
+      line-height: 1.02;
       letter-spacing: -0.03em;
-      color: var(--text-inv);
+      color: var(--text);
+      max-width: 15ch;
+      text-wrap: balance;
     }
-    .hero-title em { font-style: normal; color: var(--accent); }
-    .hero-sub {
-      font-size: clamp(0.88rem, 1.4vw, 1rem);
-      color: rgba(245,244,240,0.48);
-      margin-top: 1.1rem;
-      max-width: 50ch;
-      line-height: 1.65;
+    .hero-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: end;
+      gap: 2.5rem 4rem;
+      margin-top: clamp(2rem, 4vw, 3.5rem);
     }
-    .hero-badge {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.09);
-      border-radius: var(--radius-lg);
-      padding: 1.1rem 1.4rem;
-      text-align: center;
-      white-space: nowrap;
-      align-self: center;
-      flex-shrink: 0;
+    .hero-lead {
+      font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+      line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 44ch;
     }
-    .hero-badge-num {
-      font-family: var(--font-display);
-      font-size: 2.4rem;
+    .hero-contact {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.9rem;
+    }
+    .hero-call {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      background: var(--accent);
+      color: var(--accent-text);
+      padding: 0.85rem 1.5rem 0.95rem;
+      border-radius: var(--radius-sm);
+      transition: background 0.18s ease;
+    }
+    .hero-call:hover { background: var(--accent-dark); }
+    .hero-call-label {
+      font-size: 0.85rem;
       font-weight: 600;
-      color: var(--accent);
-      letter-spacing: -0.04em;
-      line-height: 1;
     }
-    .hero-badge-label {
-      font-size: 0.75rem;
-      color: rgba(245,244,240,0.38);
-      margin-top: 0.25rem;
-      line-height: 1.4;
+    .hero-call-number {
+      font-size: clamp(1.4rem, 2.4vw, 1.75rem);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    .hero-write {
+      font-weight: 600;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+    }
+    .hero-write:hover { text-decoration-thickness: 2px; }
+    .hero-note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    @media (max-width: 760px) {
+      .hero-body { grid-template-columns: 1fr; }
+      .hero-contact { align-items: stretch; }
+    }
+
+    /* Fakten als Liste mit Linie, nicht als Karten */
+    .hero-facts {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem 2rem;
+      margin-top: clamp(3rem, 6vw, 5rem);
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--text);
+    }
+    .hero-facts dt {
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+    .hero-facts dd {
+      margin-top: 0.3rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: var(--text-muted);
+    }
+    @media (max-width: 860px) {
+      .hero-facts { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 420px) {
+      .hero-facts { grid-template-columns: 1fr; }
     }
 
     /* ───────────────────────────────────────────────────
@@ -224,6 +254,23 @@
     .leistungen-mehr-link:hover { gap: 0.65rem; }
     .leistungen-mehr-link svg { flex-shrink: 0; }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Stiebeiner Entrümpelung",
+    "description": "Wohnungsauflösung, Haushaltsauflösung und Entrümpelung in Wunstorf und der Region Hannover.",
+    "telephone": "+49 151 50194741",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Manhorner Str. 4",
+      "postalCode": "31515",
+      "addressLocality": "Wunstorf",
+      "addressCountry": "DE"
+    },
+    "areaServed": ["Wunstorf", "Steinhude", "Garbsen", "Hannover", "Neustadt am Rübenberge", "Barsinghausen", "Bad Nenndorf", "Stadthagen"]
+  }
+  </script>
 </head>
 <body class="page-body">
 
@@ -246,7 +293,7 @@
       <li><a href="kontakt.html">Kontakt</a></li>
     </ul>
     <a href="kontakt.html" class="nav-cta">Kostenlos anfragen</a>
-    <button class="nav-hamburger" id="navHamburger" aria-label="Menü öffnen">
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navDrawer">
       <span></span><span></span><span></span>
     </button>
   </nav>
@@ -260,105 +307,45 @@
     <a href="kontakt.html" class="nav-cta">Kostenlos anfragen</a>
   </div>
 
-  <!-- ═════════════════════════════════════
-       HERO INTRO — dark band, sits directly above animation.
-       Same bg as anim-sticky-outer so they visually merge.
-  ═════════════════════════════════════ -->
-  <div class="hero-intro">
-    <div class="hero-intro-inner">
+  <main>
+
+  <section class="hero" aria-labelledby="heroTitle">
+    <h1 class="hero-title" id="heroTitle">Wohnungsauflösung und Entrümpelung in Wunstorf und der Region Hannover</h1>
+
+    <div class="hero-body">
+      <p class="hero-lead">
+        Wir sehen uns die Räume an, nennen Ihnen einen Festpreis und räumen alles aus,
+        vom Keller bis zum Dachboden. Am Ende übergeben wir besenrein.
+      </p>
+      <div class="hero-contact">
+        <a class="hero-call" href="tel:+4915150194741">
+          <span class="hero-call-label">Anrufen</span>
+          <span class="hero-call-number">0151 / 501 94 741</span>
+        </a>
+        <a class="hero-write" href="kontakt.html">Oder Anfrage schreiben</a>
+        <p class="hero-note">Rückmeldung innerhalb von 24 Stunden.</p>
+      </div>
+    </div>
+
+    <dl class="hero-facts">
       <div>
-        <p class="hero-eyebrow">Wunstorf &amp; Region Hannover</p>
-        <h1 class="hero-title">Entrümpelung.<br><em>Professionell.</em></h1>
-        <p class="hero-sub">
-          Wohnungsauflösung, Haushaltsauflösung, Messie-Wohnungen —
-          besenrein übergeben, kostenlose Besichtigung, fairer Festpreis.
-        </p>
+        <dt>Besichtigung</dt>
+        <dd>Kostenlos und unverbindlich, bei Ihnen vor Ort.</dd>
       </div>
-      <div class="hero-badge">
-        <div class="hero-badge-num">10+</div>
-        <div class="hero-badge-label">Jahre<br>Erfahrung</div>
+      <div>
+        <dt>Festpreis</dt>
+        <dd>Nach der Besichtigung, ohne Nachforderungen.</dd>
       </div>
-    </div>
-  </div>
-
-  <!-- ═════════════════════════════════════
-       ANIMATION — sticky scroll section
-       anim-sticky-outer bg = var(--bg-dark) → same as hero-intro
-       so during scroll the dark area feels continuous
-  ═════════════════════════════════════ -->
-  <div class="anim-sticky-outer" id="animOuter">
-    <div class="anim-sticky-inner">
-
-      <div id="loadingOverlay">
-        <div class="load-inner">
-          <div class="load-label" style="font-family:var(--font-body);">Wird geladen <span id="loadPct">0%</span></div>
-          <div class="load-track"><div class="load-bar" id="loadBar"></div></div>
-        </div>
+      <div>
+        <dt>Wertausgleich</dt>
+        <dd>Was noch verwertbar ist, wird auf den Preis angerechnet.</dd>
       </div>
-
-      <!-- inline style removed — width/height driven by style.css -->
-      <section class="scroll-stage">
-        <div class="sticky-canvas">
-          <canvas id="vanCanvas"></canvas>
-
-          <div class="scene-overlay scene-left" id="scene-1">
-            <span class="scene-label">Wunstorf & Umgebung</span>
-            <h2 class="scene-headline">Schnell.<br>Diskret.<br>Besenrein.</h2>
-          </div>
-          <div class="scene-overlay scene-right" id="scene-2">
-            <span class="scene-label">Zertifizierte Entsorgung</span>
-            <h2 class="scene-headline">Kein Objekt<br>zu groß.</h2>
-          </div>
-          <div class="scene-overlay scene-left" id="scene-3">
-            <span class="scene-label">Wertausgleich möglich</span>
-            <h2 class="scene-headline">Was noch gut<br>ist, bleibt im<br>Kreislauf.</h2>
-          </div>
-          <div class="scene-overlay scene-right" id="scene-4">
-            <span class="scene-label">Schlüsselübergabe-Service</span>
-            <h2 class="scene-headline">Sie müssen<br>nicht dabei<br>sein.</h2>
-          </div>
-          <div class="scene-overlay scene-center" id="scene-5">
-            <span class="scene-label">Kostenlose Besichtigung</span>
-            <h2 class="scene-headline">Ihr Auftrag.<br>Unsere Arbeit.</h2>
-            <div class="cta-block" id="cta-block">
-              <a href="kontakt.html" class="cta-btn">Jetzt anfragen &rarr;</a>
-            </div>
-          </div>
-
-          <div class="scroll-hint" id="scrollHint">
-            <span class="scroll-hint-arrow">&#x2193;</span>
-            <span class="scroll-hint-label">Scrollen</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" id="progressFill"></div>
-          </div>
-        </div>
-      </section>
-    </div>
-  </div>
-  <!-- /ANIMATION -->
-
-  <!-- USP dark band — seamless continuation of the dark scroll area -->
-  <div class="dark-band">
-    <div class="usp-row">
-      <div class="usp-item reveal">
-        <div class="usp-num">100%</div>
-        <div class="usp-label">Kostenlose Besichtigung<br>& unverbindliches Angebot</div>
+      <div>
+        <dt>Schlüsselservice</dt>
+        <dd>Sie müssen bei der Räumung nicht dabei sein.</dd>
       </div>
-      <div class="usp-item reveal reveal-delay-1">
-        <div class="usp-num">40+</div>
-        <div class="usp-label">Einsatzgebiete in der<br>Region Hannover</div>
-      </div>
-      <div class="usp-item reveal reveal-delay-2">
-        <div class="usp-num">10+</div>
-        <div class="usp-label">Jahre Erfahrung in<br>Wohnungsauflösungen</div>
-      </div>
-      <div class="usp-item reveal reveal-delay-3">
-        <div class="usp-num">0€</div>
-        <div class="usp-label">Mehrkosten durch<br>Wertausgleich möglich</div>
-      </div>
-    </div>
-  </div>
+    </dl>
+  </section>
 
   <!-- ═════════════════════════════════════
        LEISTUNGEN — 4 highlights only.
@@ -468,6 +455,8 @@
     </div>
   </div>
 
+  </main>
+
   <!-- Footer -->
   <footer class="site-footer">
     <span>&copy; 2026 Jens Stiebeiner — Wohnungsauflösungen Wunstorf</span>
@@ -478,8 +467,6 @@
     </div>
   </footer>
 
-  <!-- defer: script parses after DOM is ready, no parser blocking -->
-  <script src="animation.js" defer></script>
   <script>
     const nav = document.getElementById('siteNav');
     window.addEventListener('scroll', () => {
@@ -490,7 +477,7 @@
     const drawer = document.getElementById('navDrawer');
     ham.addEventListener('click', () => {
       ham.classList.toggle('open');
-      drawer.classList.toggle('open');
+      ham.setAttribute('aria-expanded', drawer.classList.toggle('open'));
     });
 
     const revealEls = document.querySelectorAll('.reveal');

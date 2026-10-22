@@ -6,8 +6,8 @@
   <title>Datenschutz — Stiebeiner Entrümpelung</title>
   <meta name="description" content="Datenschutzerklärung von Jens Stiebeiner, Wohnungsauflösungen Wunstorf." />
   <meta name="robots" content="noindex" />
-  <link rel="preconnect" href="https://api.fontshare.com" />
-  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="site.css" />
 </head>
 <body class="page-body">
@@ -31,7 +31,7 @@
       <li><a href="kontakt.html">Kontakt</a></li>
     </ul>
     <a href="kontakt.html" class="nav-cta">Kostenlos anfragen</a>
-    <button class="nav-hamburger" id="navHamburger" aria-label="Menü öffnen">
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navDrawer">
       <span></span><span></span><span></span>
     </button>
   </nav>
@@ -127,9 +127,32 @@
       Die von Ihnen im Kontaktformular eingegebenen Daten verbleiben bei uns, bis Sie uns zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt.
     </p>
 
+    <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:600;margin-top:1.5rem;margin-bottom:0.5rem;">Versand des Kontaktformulars über FormSubmit</h3>
+    <p class="body-text">
+      Für den Versand des Kontaktformulars nutzen wir den Dienst FormSubmit (formsubmit.co). Wenn Sie das Formular absenden, werden Ihre Eingaben und Ihre IP-Adresse an die Server von FormSubmit übertragen und von dort per E-Mail an uns weitergeleitet. Eine Übermittlung in Staaten außerhalb der EU, insbesondere in die USA, kann dabei nicht ausgeschlossen werden.
+    </p>
+    <p class="body-text" style="margin-top:1rem;">
+      Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit einem Vertrag oder vorvertraglichen Maßnahmen zusammenhängt, ansonsten unser berechtigtes Interesse an einer einfachen Kontaktaufnahme (Art. 6 Abs. 1 lit. f DSGVO). Wenn Sie das nicht möchten, erreichen Sie uns jederzeit direkt per Telefon oder E-Mail.
+    </p>
+
     <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:600;margin-top:1.5rem;margin-bottom:0.5rem;">Anfrage per E-Mail oder Telefon</h3>
     <p class="body-text">
       Wenn Sie uns per E-Mail oder Telefon kontaktieren, wird Ihre Anfrage inklusive aller daraus hervorgehenden personenbezogenen Daten (Name, Anfrage) zum Zwecke der Bearbeitung Ihres Anliegens bei uns gespeichert und verarbeitet. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
+    </p>
+
+    <h2 class="section-heading" style="font-size:1.2rem;margin-top:2.5rem;margin-bottom:1rem;">5. Plugins und Tools</h2>
+
+    <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:600;margin-bottom:0.5rem;" id="openstreetmap">OpenStreetMap</h3>
+    <p class="body-text">
+      Auf unserer Kontaktseite können Sie eine Karte von OpenStreetMap laden. Anbieter ist die OpenStreetMap Foundation (OSMF), St John’s Innovation Centre, Cowley Road, Cambridge, CB4 0WS, Vereinigtes Königreich.
+    </p>
+    <p class="body-text" style="margin-top:1rem;">
+      Die Karte wird erst geladen, wenn Sie auf „Karte laden“ klicken. Erst dann werden Ihre IP-Adresse und weitere technische Daten (z.&nbsp;B. Browser, Uhrzeit des Abrufs) an die OSMF übertragen. Rechtsgrundlage ist Ihre Einwilligung durch den Klick (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG); sie gilt nur für den jeweiligen Seitenaufruf. Für das Vereinigte Königreich besteht ein Angemessenheitsbeschluss der EU-Kommission. Weitere Informationen: <a href="https://wiki.osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener noreferrer">Datenschutzerklärung der OSMF</a>.
+    </p>
+
+    <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:600;margin-top:1.5rem;margin-bottom:0.5rem;">Schriftarten</h3>
+    <p class="body-text">
+      Diese Website verwendet Schriftarten, die lokal auf unserem Server gespeichert sind. Beim Aufruf der Seite wird dafür keine Verbindung zu Servern Dritter aufgebaut.
     </p>
 
     <p class="body-text" style="margin-top:2.5rem;color:var(--text-faint);font-size:0.8rem;">
@@ -157,7 +180,7 @@
     const drawer = document.getElementById('navDrawer');
     ham.addEventListener('click', () => {
       ham.classList.toggle('open');
-      drawer.classList.toggle('open');
+      ham.setAttribute('aria-expanded', drawer.classList.toggle('open'));
     });
   </script>
 </body>
