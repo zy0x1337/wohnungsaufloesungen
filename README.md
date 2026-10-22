@@ -1,26 +1,26 @@
-# 🚐 Sprinter Scroll Animation
+# Wohnungsauflösungen Wunstorf
 
-Scroll-driven animation of a white Sprinter van being loaded with household items (Entrümpelung / Wohnungsauflösung). Items fly smoothly into the open cargo hold as the user scrolls.
+Website für Jens Stiebeiner – Wohnungsauflösung und Entrümpelung in Wunstorf und der Region Hannover.
 
-## Concept
+Statisches HTML/CSS ohne Build-Schritt. Lokal ansehen:
 
-- **Sticky scroll**: page scrolls but viewport stays fixed
-- **Scroll progress** (0–100%) drives the animation timeline
-- **Frame scrubbing**: 57 JPEG frames extracted from video → mapped to scroll position via Canvas
-- Smooth cover-fit rendering, progress bar, scroll hint
+```
+python3 -m http.server
+```
 
-## Project Structure
+## Struktur
 
 ```
 /
-├── index.html
-├── style.css
-├── animation.js
-├── vercel.json
-└── assets/
-    └── ezgif-frame-001.jpg … ezgif-frame-057.jpg
+├── index.html, ueber-uns.html, kontakt.html, impressum.html, datenschutz.html
+├── site.css            gemeinsame Tokens und Komponenten
+├── ablauf.js           Grundriss-Ablauf auf der Startseite (Zustand je Scroll-Schritt)
+├── site.js             Navigation (Scroll-Linie, mobiles Menü)
+├── fonts/              Archivo (selbst gehostet, OFL)
+├── favicon.svg, apple-touch-icon.png, og-image.png
+├── brand/              Fakten, Tonalität, Anti-Slop-Regeln, visuelle Entscheidungen
+├── AGENTS.md           Regeln für KI-Tools (CLAUDE.md verweist darauf)
+└── vercel.json
 ```
 
-## Setup
-
-Open `index.html` in a browser – no build step needed.
+`brand/`, `AGENTS.md`, `CLAUDE.md` und diese README werden nicht mit ausgeliefert.
