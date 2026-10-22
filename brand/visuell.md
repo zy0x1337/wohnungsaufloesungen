@@ -1,36 +1,56 @@
 # Visuell
 
-Status insgesamt: **offen**. Freigegeben ist nur, was ausdrücklich so markiert ist.
+Status: **umgesetzt als Vorschlag** (Oktober 2026). Nichts davon ist vom Inhaber freigegeben.
+Was freigegeben wird, hier mit „freigegeben“ markieren.
+
+## Prinzip
+
+Papierweiß, Tinte, Signalgelb. Ruhig, sachlich, wie ein sauber gesetztes Formular.
+Vertrauen entsteht durch Klarheit und konkrete Aussagen, nicht durch Effekte.
+
+## Farben (Tokens in `site.css`)
+
+| Rolle | Token | Wert |
+|---|---|---|
+| Hintergrund (Papierweiß) | `--bg` | `#f6f5f1` |
+| Fläche (Karte, Grundriss-Boden) | `--surface` | `#edebe5` |
+| Weiß (Eingabefelder, Möbel) | `--surface-2` | `#ffffff` |
+| Text (Tinte) | `--text` | `#171613` |
+| Text gedämpft | `--text-muted` | `#5a5852` (6,5:1 auf Papierweiß) |
+| Dunkle Bänder, Footer | `--bg-dark` | `#171613` |
+| Akzent (Signalgelb) | `--accent` | `#f0c000`, Hover `#dfb200` |
+
+- Gelb nur für Handlungen: Anrufen, Anfragen, Absenden. Nie als Dekoration.
+- Navigation markiert die aktive Seite mit einer Linie in Tinte, nicht in Gelb.
 
 ## Schrift
 
 - **Archivo**, variabel (Gewicht 100–900, Breite 62–125 %), lokal in `fonts/`, SIL Open Font License
-- Status: Vorschlag (Oktober 2026)
-- Warum: Clash Display und Cabinet Grotesk wurden extern von Fontshare geladen (Datenschutz) und sind ein typisches KI-Standard-Pairing. Archivo ist eine robuste Grotesk ohne Trend-Charakter und passt zum Handwerk.
-- Eine Familie für alles. Hierarchie über Größe, Gewicht und Breite, nicht über eine zweite Schrift.
-
-## Farben
-
-Aktuelle Tokens in `site.css`:
-
-| Rolle | Wert |
-|---|---|
-| Text | `#151412` |
-| Dunkel | `#1a1917` |
-| Hintergrund | `#e8e8e6` |
-| Fläche | `#f0efed` |
-| Akzent (Signalgelb) | `#f0c000`, Hover `#c89800` |
-
-- Status: offen
-- Die Grautöne wurden an die Frames des alten KI-Videos angepasst. Das Video ist entfernt, für genau diese Grautöne gibt es keinen Grund mehr.
-- Die Akzentfarbe idealerweise vom echten Fahrzeug oder der Arbeitskleidung ableiten, sobald es Fotos gibt.
-- Regel (gilt jetzt schon): Akzent nur für Handlungen, nie als Dekoration.
+- Eine Familie für alles. Überschriften 700, Breite 92 %, leicht negative Laufweite. Fließtext 400.
+- Fließtext mindestens 16 px, Beschreibungen 17 px (viele Kunden sind älter).
 
 ## Logo
 
-- Aktuell: Transporter aus SVG-Rechtecken im gelben Quadrat (Navigation, `favicon.svg`)
-- Status: Platzhalter. Gebraucht wird ein echtes Logo oder eine Wortmarke.
-- Dateien gehören nach `brand/assets/`.
+- **Zeichen:** gelbes Quadrat mit einem Mini-Grundriss (Raum, Wand, Tür). Greift die Ablauf-Animation der Startseite auf.
+- **Wortmarke:** „Stiebeiner“ (800, Breite 92 %) mit Unterzeile „Entrümpelung & Wohnungsauflösung“. Unter 480 px nur „Stiebeiner“.
+- Dateien: `favicon.svg`, `apple-touch-icon.png`, Zeichen inline in der Navigation.
+
+## Layout
+
+- Container 1160 px, Seitenrand `--gutter`, Abschnittsabstand `--section`
+- Jeder Abschnitt: Linie oben, Überschrift links (4/12), Inhalt rechts (8/12)
+- Fakten und Listen als Zeilen mit Linien (`.rows`), keine Karten
+- Seiten enden mit dem dunklen Abschluss-Band (Anrufen) und dem Footer mit Kontaktdaten
+
+## Bewegung
+
+- Einzige Animation: der Grundriss-Ablauf auf der Startseite (`ablauf.js`). Er erklärt den Ablauf.
+- Seitenwechsel mit sanftem Überblenden (View Transitions), sonst nur Hover-Zustände.
+- `prefers-reduced-motion` schaltet alle Übergänge ab.
+
+## Vorschaubild
+
+- `og-image.png` (1200 × 630) für WhatsApp, Facebook usw. Wurde aus HTML gerendert. Bei Änderungen von Name, Telefonnummer oder Headline neu erzeugen.
 
 ## Fotos
 

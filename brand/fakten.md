@@ -44,7 +44,7 @@ Nur was hier steht, darf als Tatsache auf die Seite. Alles unter „Zu klären�
 - **E-Mail:** Impressum und Datenschutz nennen `info@stiebeiner-entruempelung.de`, Kontaktseite und Formular `jensstiebeiner@yahoo.de`. Welche gilt, und gibt es die Domain?
 - **Impressum:** Straße/Hausnummer und USt-IdNr. (oder Hinweis auf Kleinunternehmerregelung) sind Platzhalter. Das ist Pflicht.
 - **„Zertifizierte Entsorgung“:** Welches Zertifikat, welcher Entsorgungsbetrieb? Bis dahin nicht prominent verwenden.
-- **Domain der Live-Seite:** Das Formular leitet auf `sprinter-scroll-animation.vercel.app` zurück.
+- **Domain der Live-Seite:** Formular-Weiterleitung und `og:image` zeigen auf `sprinter-scroll-animation.vercel.app`. Bei eigener Domain beides anpassen.
 - **Hoster:** Vercel, GitHub Pages oder beides? Muss in `datenschutz.html` namentlich genannt werden.
 - **Erreichbarkeit:** Wann ist Jens telefonisch erreichbar?
 - **Bewertungen:** Gibt es ein Google-Unternehmensprofil mit Bewertungen?

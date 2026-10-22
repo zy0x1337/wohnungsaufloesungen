@@ -23,6 +23,7 @@ Statisches HTML/CSS, kein Build-Schritt. Diese Regeln gelten für jedes KI-Tool,
 
 - Seiten: `index.html`, `ueber-uns.html`, `kontakt.html`, `impressum.html`, `datenschutz.html`
 - `site.css`: gemeinsame Tokens und Komponenten. Seitenspezifisches CSS steht inline im `<head>` der jeweiligen Seite.
+- `site.js`: Navigation, auf jeder Seite eingebunden. Navigation und Footer sind auf allen fünf Seiten identisch; Änderungen überall gleich machen.
 - Kontaktformular: FormSubmit (`formsubmit.co`), siehe `kontakt.html`.
 - Deploy: GitHub Pages (`.github/workflows/deploy-pages.yml`) und Vercel (`vercel.json`). `brand/`, `AGENTS.md`, `CLAUDE.md` und `README.md` werden nicht mit ausgeliefert.
 - Prüfen: Seiten lokal mit einem statischen Server öffnen (z. B. `python3 -m http.server`) und bei 375 px und 1440 px Breite ansehen.

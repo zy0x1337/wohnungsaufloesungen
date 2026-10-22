@@ -15,8 +15,9 @@ python3 -m http.server
 ├── index.html, ueber-uns.html, kontakt.html, impressum.html, datenschutz.html
 ├── site.css            gemeinsame Tokens und Komponenten
 ├── ablauf.js           Grundriss-Ablauf auf der Startseite (Zustand je Scroll-Schritt)
+├── site.js             Navigation (Scroll-Linie, mobiles Menü)
 ├── fonts/              Archivo (selbst gehostet, OFL)
-├── favicon.svg
+├── favicon.svg, apple-touch-icon.png, og-image.png
 ├── brand/              Fakten, Tonalität, Anti-Slop-Regeln, visuelle Entscheidungen
 ├── AGENTS.md           Regeln für KI-Tools (CLAUDE.md verweist darauf)
 └── vercel.json
