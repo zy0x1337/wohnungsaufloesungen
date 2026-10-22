@@ -85,6 +85,138 @@
     @media (max-width: 420px) {
       .hero-facts { grid-template-columns: 1fr; }
     }
+
+    /* ───────────────────────────────────────────────────
+       ABLAUF — Grundriss, der sich beim Scrollen leert.
+       Die Schritte sind normaler Text; der Grundriss
+       zeigt nur, was im jeweiligen Schritt passiert.
+    ─────────────────────────────────────────────────── */
+    .ablauf-head {
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--text);
+    }
+    .ablauf-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+      gap: 0 3.5rem;
+    }
+    .ablauf-plan {
+      position: sticky;
+      top: var(--nav-h);
+      height: calc(100vh - var(--nav-h));
+      display: flex;
+      align-items: center;
+      margin: 0;
+    }
+    .ablauf-plan svg {
+      display: block;
+      width: 100%;
+      max-height: 100%;
+    }
+    .ablauf-steps { list-style: none; }
+    .ablauf-step {
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem 0;
+      transition: opacity 0.3s ease;
+    }
+    .ablauf.is-enhanced .ablauf-step { opacity: 0.3; }
+    .ablauf.is-enhanced .ablauf-step.is-active { opacity: 1; }
+    .ablauf-num {
+      font-weight: 700;
+      color: var(--text-muted);
+      font-variant-numeric: tabular-nums;
+    }
+    .ablauf-step h3 {
+      margin-top: 0.4rem;
+      font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+      font-weight: 700;
+      font-stretch: 92%;
+      letter-spacing: -0.015em;
+      line-height: 1.15;
+    }
+    .ablauf-step p {
+      margin-top: 0.7rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 36ch;
+    }
+    @media (max-width: 760px) {
+      .ablauf-grid { grid-template-columns: 1fr; }
+      .ablauf-plan {
+        z-index: 2;
+        height: auto;
+        padding: 0.75rem 0;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+      }
+      .ablauf-step { min-height: 55vh; }
+      .plan-label { display: none; } /* bei Handybreite unlesbar klein */
+    }
+
+    /* Grundriss-Zeichnung */
+    .plan-floor { fill: transparent; transition: fill 0.6s ease; }
+    .plan-wall { fill: none; stroke: var(--text); }
+    .plan-wall--outer { stroke-width: 8; }
+    .plan-wall--inner { stroke-width: 5; }
+    .plan-window { fill: none; stroke: var(--text); stroke-width: 1.1; }
+    .plan-door { fill: none; stroke: var(--text-muted); stroke-width: 1; }
+    .plan-items {
+      fill: var(--surface-2);
+      stroke: var(--text-muted);
+      stroke-width: 1.3;
+      transition: opacity 0.45s ease, transform 0.7s var(--ease-out);
+    }
+    .plan-label {
+      font-family: var(--font-body);
+      font-size: 13px;
+      fill: var(--text-muted);
+    }
+    .plan-check {
+      fill: var(--surface-2);
+      stroke: var(--text);
+      stroke-width: 1.5;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .plan-price, .plan-final { opacity: 0; transition: opacity 0.4s ease; }
+    .plan-price rect { fill: var(--text); }
+    .plan-price text {
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 700;
+      fill: var(--text-inv);
+    }
+    .plan-final-title {
+      font-family: var(--font-display);
+      font-size: 30px;
+      font-weight: 700;
+      font-stretch: 92%;
+      letter-spacing: -0.02em;
+      fill: var(--text);
+    }
+    .plan-key { fill: none; stroke: var(--text); stroke-width: 2; }
+    .plan-final-note {
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 700;
+      fill: var(--text);
+    }
+
+    /* Zustände (data-stage setzt ablauf.js) */
+    [data-stage="2"] .plan-check {
+      opacity: 1;
+      transition-delay: calc(var(--i) * 140ms);
+    }
+    [data-stage="2"] .plan-price { opacity: 1; transition-delay: 0.9s; }
+    .plan-room.is-cleared .plan-items {
+      opacity: 0;
+      transform: translate(var(--dx), var(--dy));
+    }
+    [data-stage="4"] .plan-floor { fill: var(--surface-2); }
+    [data-stage="4"] .plan-final { opacity: 1; transition-delay: 0.3s; }
   </style>
   <script type="application/ld+json">
   {
@@ -210,21 +342,112 @@
     </div>
   </section>
 
-  <section class="block" aria-labelledby="ablaufTitle">
-    <div class="block-grid">
+  <section class="block ablauf" id="ablauf" aria-labelledby="ablaufTitle">
+    <div class="ablauf-head">
       <h2 class="block-title" id="ablaufTitle">So läuft ein Auftrag ab</h2>
-      <ol class="rows">
-        <li>
-          <span class="rows-term"><span class="rows-num">1</span>Anfrage</span>
-          <span class="rows-desc">Sie rufen an oder schreiben uns. Eine grobe Beschreibung reicht.</span>
+    </div>
+    <div class="ablauf-grid">
+      <figure class="ablauf-plan" data-stage="1">
+    <svg viewBox="0 0 640 440" role="img" aria-labelledby="planTitle">
+      <title id="planTitle">Grundriss einer Wohnung, die Raum für Raum geräumt und besenrein übergeben wird</title>
+      <rect class="plan-floor" data-floor="wohnen" x="20" y="20" width="340" height="220"/>
+      <rect class="plan-floor" data-floor="schlafen" x="20" y="240" width="340" height="180"/>
+      <rect class="plan-floor" data-floor="kueche" x="360" y="20" width="260" height="150"/>
+      <rect class="plan-floor" data-floor="bad" x="440" y="300" width="180" height="120"/>
+      <rect class="plan-floor" data-floor="kammer" x="360" y="300" width="80" height="120"/>
+      <rect class="plan-floor" data-floor="flur" x="360" y="170" width="260" height="130"/>
+      <g class="plan-room" data-room="wohnen" data-clear-order="1">
+        <g class="plan-items" style="--dx:24px;--dy:0px">
+        <rect x="80" y="30" width="150" height="18"/><path d="M130 30 V48 M180 30 V48"/>
+        <rect x="100" y="112" width="72" height="40" rx="3"/>
+        <rect x="232" y="104" width="48" height="48" rx="6"/><path d="M268 104 V152"/>
+        <rect x="60" y="176" width="150" height="56" rx="5"/><path d="M60 218 H210 M74 176 V218 M196 176 V218"/>
+        <rect x="292" y="40" width="34" height="34"/><path d="M292 40 L326 74 M326 40 L292 74"/><rect x="298" y="80" width="28" height="28"/><path d="M298 80 L326 108 M326 80 L298 108"/>
+        </g>
+      </g>
+      <g class="plan-room" data-room="schlafen" data-clear-order="2">
+        <g class="plan-items" style="--dx:24px;--dy:0px">
+        <rect x="28" y="296" width="120" height="110" rx="3"/>
+        <rect x="34" y="302" width="22" height="46" rx="4"/><rect x="34" y="354" width="22" height="46" rx="4"/><path d="M66 296 V406"/>
+        <rect x="28" y="270" width="24" height="22"/>
+        <rect x="150" y="248" width="150" height="26"/><path d="M200 248 V274 M250 248 V274"/>
+        <rect x="250" y="362" width="96" height="40"/><circle cx="298" cy="346" r="10"/>
+        <rect x="180" y="318" width="32" height="32"/><path d="M180 318 L212 350 M212 318 L180 350"/>
+        </g>
+      </g>
+      <g class="plan-room" data-room="kueche" data-clear-order="3">
+        <g class="plan-items" style="--dx:0px;--dy:16px">
+        <rect x="368" y="28" width="244" height="30"/><rect x="440" y="33" width="40" height="20" rx="4"/>
+        <circle cx="534" cy="37" r="4.5"/><circle cx="552" cy="37" r="4.5"/><circle cx="534" cy="49" r="4.5"/><circle cx="552" cy="49" r="4.5"/>
+        <rect x="578" y="64" width="34" height="38"/>
+        <rect x="456" y="100" width="70" height="44" rx="2"/><rect x="438" y="110" width="14" height="24" rx="2"/><rect x="530" y="110" width="14" height="24" rx="2"/>
+        </g>
+      </g>
+      <g class="plan-room" data-room="bad" data-clear-order="4">
+        <g class="plan-items" style="--dx:0px;--dy:-16px">
+        <rect x="450" y="364" width="104" height="48" rx="10"/><rect x="458" y="371" width="88" height="34" rx="8"/>
+        <rect x="590" y="310" width="22" height="12" rx="2"/><ellipse cx="601" cy="336" rx="10" ry="13"/>
+        <rect x="568" y="388" width="44" height="24" rx="3"/><ellipse cx="590" cy="400" rx="12" ry="7"/>
+        </g>
+      </g>
+      <g class="plan-room" data-room="kammer" data-clear-order="5">
+        <g class="plan-items" style="--dx:0px;--dy:-16px">
+        <rect x="366" y="345" width="16" height="69"/><path d="M366 368 H382 M366 391 H382"/>
+        <rect x="400" y="338" width="28" height="28"/><path d="M400 338 L428 366 M428 338 L400 366"/><rect x="396" y="372" width="36" height="36"/><path d="M396 372 L432 408 M432 372 L396 408"/>
+        </g>
+      </g>
+      <g class="plan-room" data-room="flur" data-clear-order="6">
+        <g class="plan-items" style="--dx:24px;--dy:0px">
+        <rect x="430" y="280" width="80" height="14"/>
+        <rect x="578" y="256" width="34" height="34"/><path d="M578 273 H612"/>
+        </g>
+      </g>
+      <path class="plan-wall plan-wall--outer" d="M16 20 H80 M200 20 H240 M320 20 H440 M560 20 H624 M620 16 V195 M620 245 V424 M16 420 H120 M240 420 H520 M580 420 H624 M20 16 V80 M20 180 V424"/>
+      <path class="plan-wall plan-wall--inner" d="M360 16 V185 M360 225 V250 M360 290 V424 M16 240 H362.5 M357.5 170 H400 M440 170 H624 M357.5 300 H380 M415 300 H520 M560 300 H624 M440 297.5 V424"/>
+      <path class="plan-window" d="M80 17 H200 M80 20 H200 M80 23 H200 M240 17 H320 M240 20 H320 M240 23 H320 M440 17 H560 M440 20 H560 M440 23 H560 M120 417 H240 M120 420 H240 M120 423 H240 M520 417 H580 M520 420 H580 M520 423 H580 M17 80 V180 M20 80 V180 M23 80 V180"/>
+      <path class="plan-door" d="M360 185 L320 185 A40 40 0 0 0 360 225 M360 290 L320 290 A40 40 0 0 1 360 250 M400 170 L400 130 A40 40 0 0 1 440 170 M380 300 L380 335 A35 35 0 0 0 415 300 M560 300 L560 340 A40 40 0 0 1 520 300 M620 245 L570 245 A50 50 0 0 1 620 195"/>
+      <text class="plan-label" x="190" y="84" text-anchor="middle">Wohnzimmer</text>
+      <text class="plan-label" x="226" y="304" text-anchor="middle">Schlafzimmer</text>
+      <text class="plan-label" x="500" y="86" text-anchor="middle">Küche</text>
+      <text class="plan-label" x="490" y="346" text-anchor="middle">Bad</text>
+      <text class="plan-label" x="480" y="262" text-anchor="middle">Flur</text>
+      <g class="plan-check" style="--i:0" transform="translate(36 36)"><circle r="7"/><path d="M-3.5 0 L-1 2.5 L3.5 -2.5"/></g>
+      <g class="plan-check" style="--i:1" transform="translate(36 258)"><circle r="7"/><path d="M-3.5 0 L-1 2.5 L3.5 -2.5"/></g>
+      <g class="plan-check" style="--i:2" transform="translate(376 72)"><circle r="7"/><path d="M-3.5 0 L-1 2.5 L3.5 -2.5"/></g>
+      <g class="plan-check" style="--i:3" transform="translate(456 316)"><circle r="7"/><path d="M-3.5 0 L-1 2.5 L3.5 -2.5"/></g>
+      <g class="plan-check" style="--i:4" transform="translate(373 318)"><circle r="7"/><path d="M-3.5 0 L-1 2.5 L3.5 -2.5"/></g>
+      <g class="plan-check" style="--i:5" transform="translate(376 186)"><circle r="7"/><path d="M-3.5 0 L-1 2.5 L3.5 -2.5"/></g>
+      <g class="plan-price">
+        <rect x="442" y="179" width="116" height="30" rx="3"/>
+        <text x="500" y="199" text-anchor="middle">Festpreis</text>
+      </g>
+      <g class="plan-final">
+        <text class="plan-final-title" x="190" y="140" text-anchor="middle">Besenrein</text>
+        <g class="plan-key" transform="translate(440 194)"><circle r="6"/><path d="M6 0 H24 M18 0 V5 M22 0 V4"/></g>
+        <text class="plan-final-note" x="470" y="199">Schlüssel zurück</text>
+      </g>
+    </svg>
+      </figure>
+      <ol class="ablauf-steps">
+        <li class="ablauf-step">
+          <span class="ablauf-num">1</span>
+          <h3>Anfrage</h3>
+          <p>Sie rufen an oder schreiben uns, was geräumt werden soll. Eine grobe Beschreibung reicht.</p>
         </li>
-        <li>
-          <span class="rows-term"><span class="rows-num">2</span>Besichtigung und Festpreis</span>
-          <span class="rows-desc">Wir sehen uns alles vor Ort an, kostenlos und unverbindlich. Danach bekommen Sie einen Festpreis.</span>
+        <li class="ablauf-step">
+          <span class="ablauf-num">2</span>
+          <h3>Besichtigung und Festpreis</h3>
+          <p>Wir sehen uns jeden Raum vor Ort an, kostenlos und unverbindlich. Danach bekommen Sie einen Festpreis, ohne Nachforderungen.</p>
         </li>
-        <li>
-          <span class="rows-term"><span class="rows-num">3</span>Räumung und Übergabe</span>
-          <span class="rows-desc">Wir räumen zum vereinbarten Termin und übergeben besenrein. Den Schlüssel können Sie uns überlassen.</span>
+        <li class="ablauf-step">
+          <span class="ablauf-num">3</span>
+          <h3>Räumung</h3>
+          <p>Zum vereinbarten Termin räumen wir Raum für Raum. Was noch verwertbar ist, geben wir weiter und rechnen es auf den Preis an.</p>
+        </li>
+        <li class="ablauf-step">
+          <span class="ablauf-num">4</span>
+          <h3>Übergabe</h3>
+          <p>Am Ende übergeben wir besenrein. Wenn Sie nicht vor Ort sein können, bringen wir Ihnen den Schlüssel zurück.</p>
         </li>
       </ol>
     </div>
@@ -297,6 +520,7 @@
     </div>
   </footer>
 
+  <script src="ablauf.js" defer></script>
   <script>
     const nav = document.getElementById('siteNav');
     window.addEventListener('scroll', () => {
