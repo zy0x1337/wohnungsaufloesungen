@@ -4,574 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Über uns — Stiebeiner Entrümpelung Wunstorf</title>
-  <meta name="description" content="Wir bieten Wohnungsauflösungen und Entrümpelungen in Wunstorf und der gesamten Region Hannover an. Diskret, zuverlässig, besenrein." />
+  <meta name="description" content="Stiebeiner Entrümpelung aus Wunstorf: Wohnungsauflösungen und Entrümpelungen in der gesamten Region Hannover. Diskret, mit Festpreis und besenreiner Übergabe." />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="de_DE" />
   <meta property="og:site_name" content="Stiebeiner Entrümpelung" />
   <meta property="og:title" content="Über uns — Stiebeiner Entrümpelung Wunstorf" />
-  <meta property="og:description" content="Wir bieten Wohnungsauflösungen und Entrümpelungen in Wunstorf und der gesamten Region Hannover an. Diskret, zuverlässig, besenrein." />
+  <meta property="og:description" content="Stiebeiner Entrümpelung aus Wunstorf: Wohnungsauflösungen und Entrümpelungen in der gesamten Region Hannover. Diskret, mit Festpreis und besenreiner Übergabe." />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="site.css" />
-  <style>
-    body { overflow-x: hidden; overflow-y: auto; }
-
-    /* ── Hero ── */
-    .hero-band {
-      background: var(--bg-dark);
-      padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 3.5rem);
-    }
-    .hero-band-inner {
-      max-width: 1160px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: end;
-      gap: 2rem;
-    }
-    @media (max-width: 600px) {
-      .hero-band-inner { grid-template-columns: 1fr; }
-    }
-    .hero-eyebrow {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .hero-eyebrow::before {
-      content: '';
-      display: block;
-      width: 18px;
-      height: 2px;
-      background: var(--accent);
-    }
-    .hero-title {
-      font-family: var(--font-display);
-      font-size: clamp(2.4rem, 6vw, 4.5rem);
-      font-weight: 600;
-      line-height: 1.04;
-      letter-spacing: -0.03em;
-      color: var(--text-inv);
-    }
-    .hero-title em { font-style: normal; color: var(--accent); }
-    .hero-sub {
-      font-size: clamp(0.9rem, 1.5vw, 1rem);
-      color: rgba(245,244,240,0.50);
-      margin-top: 1.25rem;
-      max-width: 52ch;
-      line-height: 1.65;
-    }
-    .hero-badge {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.09);
-      border-radius: var(--radius-lg);
-      padding: 1.25rem 1.5rem;
-      text-align: center;
-      white-space: nowrap;
-      align-self: center;
-    }
-    .hero-badge-num {
-      font-family: var(--font-display);
-      font-size: 2.6rem;
-      font-weight: 600;
-      color: var(--accent);
-      letter-spacing: -0.04em;
-      line-height: 1;
-    }
-    .hero-badge-label {
-      font-size: 0.78rem;
-      color: rgba(245,244,240,0.4);
-      margin-top: 0.3rem;
-      line-height: 1.4;
-    }
-
-    /* ═══════════════════════════════════════════════════
-       LEISTUNGEN — 4-col bento
-    ═══════════════════════════════════════════════════ */
-    .leistungen-section {
-      padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 3.5rem);
-      max-width: 1160px;
-      margin: 0 auto;
-    }
-
-    .leistungen-grid {
-      margin-top: 2.5rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr auto;
-      grid-template-areas:
-        "feat feat c02 c03"
-        "feat feat c04 c05"
-        "c06  c06  cta cta";
-      gap: 2px;
-      background: rgba(0,0,0,0.13);
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-    }
-
-    .lcard--featured { grid-area: feat; }
-    .lcard--c02      { grid-area: c02; }
-    .lcard--c03      { grid-area: c03; }
-    .lcard--c04      { grid-area: c04; }
-    .lcard--c05      { grid-area: c05; }
-    .lcard--c06      { grid-area: c06; }
-    .lcard--cta      { grid-area: cta; }
-
-    @media (max-width: 860px) {
-      .leistungen-grid {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: none;
-        grid-template-areas: none;
-      }
-      .lcard--featured,
-      .lcard--c02, .lcard--c03,
-      .lcard--c04, .lcard--c05,
-      .lcard--c06, .lcard--cta { grid-area: auto; }
-      .lcard--cta { grid-column: span 2; }
-    }
-    @media (max-width: 520px) {
-      .leistungen-grid { grid-template-columns: 1fr; }
-      .lcard--cta { grid-column: span 1; }
-    }
-
-    .lcard {
-      background: var(--surface);
-      padding: 2rem 1.75rem 1.75rem;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      min-height: 200px;
-      transition: background 0.22s ease;
-    }
-    .lcard:hover { background: var(--surface-2); }
-
-    .lcard--featured {
-      background: var(--bg-dark);
-      min-height: 420px;
-      padding: 2.5rem 2rem 2rem;
-    }
-    .lcard--featured:hover { background: #232220; }
-
-    .lcard--cta {
-      background: var(--bg-dark);
-      justify-content: center;
-      align-items: flex-start;
-      gap: 1rem;
-      padding: 2.25rem 2rem;
-      min-height: 0;
-    }
-    .lcard--cta:hover { background: #1e1d1b; }
-    .lcard-cta-label {
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: rgba(240,192,0,0.55);
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      margin-bottom: 0.5rem;
-    }
-    .lcard-cta-label::before {
-      content: '';
-      display: block;
-      width: 14px;
-      height: 1.5px;
-      background: currentColor;
-      border-radius: 2px;
-    }
-    .lcard-cta-title {
-      font-family: var(--font-display);
-      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
-      font-weight: 600;
-      letter-spacing: -0.025em;
-      line-height: 1.1;
-      color: var(--text-inv);
-      margin-bottom: 1.25rem;
-    }
-    .lcard-cta-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-    .lcard-cta-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-family: var(--font-display);
-      font-size: 0.875rem;
-      font-weight: 600;
-      padding: 0.6rem 1.25rem;
-      border-radius: var(--radius-sm);
-      transition: background 0.18s ease, transform 0.18s ease;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-    .lcard-cta-btn--primary { background: var(--accent); color: var(--accent-text); }
-    .lcard-cta-btn--primary:hover { background: var(--accent-dark); transform: translateY(-1px); }
-    .lcard-cta-btn--ghost {
-      background: rgba(255,255,255,0.07);
-      color: var(--text-inv);
-      border: 1px solid rgba(255,255,255,0.12);
-    }
-    .lcard-cta-btn--ghost:hover { background: rgba(255,255,255,0.12); }
-
-    .lcard-num {
-      position: absolute;
-      top: -0.15em;
-      right: 0.15em;
-      font-family: var(--font-display);
-      font-size: clamp(5rem, 10vw, 8rem);
-      font-weight: 700;
-      line-height: 1;
-      letter-spacing: -0.04em;
-      color: rgba(0,0,0,0.055);
-      pointer-events: none;
-      user-select: none;
-    }
-    .lcard--featured .lcard-num {
-      color: rgba(240,192,0,0.08);
-      font-size: clamp(7rem, 16vw, 13rem);
-    }
-    .lcard--c06 .lcard-num { font-size: clamp(6rem, 13vw, 10rem); }
-
-    .lcard-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--text-faint);
-      margin-bottom: 0.75rem;
-    }
-    .lcard--featured .lcard-tag { color: rgba(240,192,0,0.55); }
-    .lcard-tag::before {
-      content: '';
-      display: block;
-      width: 14px;
-      height: 1.5px;
-      background: currentColor;
-      border-radius: 2px;
-    }
-
-    .lcard-title {
-      font-family: var(--font-display);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-      color: var(--text);
-    }
-    .lcard--featured .lcard-title {
-      color: var(--text-inv);
-      font-size: clamp(1.5rem, 3.5vw, 2.4rem);
-    }
-    .lcard:not(.lcard--featured):not(.lcard--cta) .lcard-title {
-      font-size: clamp(1rem, 2vw, 1.25rem);
-    }
-
-    .lcard-desc { margin-top: 0.6rem; font-size: 0.84rem; line-height: 1.6; }
-    .lcard--featured .lcard-desc {
-      color: rgba(245,244,240,0.45);
-      font-size: 0.9rem;
-      max-width: 36ch;
-      margin-top: 0.8rem;
-    }
-    .lcard:not(.lcard--featured) .lcard-desc { color: var(--text-muted); }
-
-    .lcard-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      background: var(--accent);
-      color: var(--accent-text);
-      font-family: var(--font-display);
-      font-size: 0.8rem;
-      font-weight: 700;
-      padding: 0.4rem 0.9rem;
-      border-radius: var(--radius-full);
-      margin-top: 1.75rem;
-      letter-spacing: 0.02em;
-      width: fit-content;
-    }
-
-    /* ═══════════════════════════════════════════════════
-       WERTE — explicit 3-col grid-template-areas
-       Layout:
-         [ disk (col 1-2) ] [ zuv ]
-         [ bes  ] [ reg  ] [ umw ]
-         [ preis (col 1-2) ] [ --- ghost ]  ← no: 6 cards = 2 rows of 3, no orphan
-       Simpler: fixed 3-col, 2 rows → 6 slots, always full.
-       Featured "Diskretion" spans col 1-2 in row 1 for visual weight.
-       Row 2: Besenrein | Regional | Umwelt
-       Row 3: Preis (spans 2) | nothing ← avoid orphan
-       Better: just 3 cols × 2 rows, no spanning → 6 cards, zero orphans.
-       With a twist: first card wide (spans 2) + 1 normal = row 1 (3 cols = 2+1)
-                     row 2: 3 normal cards = 3 cols
-       Total: 1 wide + 1 + 3 = 5 cards? No, we have 6.
-       Cleanest: 3-col, 2 rows, all equal. No orphan ever. Done.
-    ═══════════════════════════════════════════════════ */
-    .values-section {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .values-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: auto auto;
-      grid-template-areas:
-        "vfeat vfeat v02"
-        "v03   v04   v05";
-      gap: 2px;
-      background: rgba(0,0,0,0.10);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      margin-top: 2.5rem;
-    }
-
-    /* Fairer Preis gets its own full-width bottom row — making 7th slot */
-    /* Better: 6 cards, layout:
-         vfeat vfeat v02   (row 1: wide Diskretion + Zuverlässigkeit)
-         v03   v04   v05   (row 2: Besenrein, Regional, Umwelt)
-         vwide vwide vwide (row 3: Fairer Preis full-width accent strip)
-    */
-    .values-grid {
-      grid-template-areas:
-        "vfeat vfeat v02"
-        "v03   v04   v05"
-        "vbot  vbot  vbot";
-      grid-template-rows: auto auto auto;
-    }
-
-    .vcard--feat  { grid-area: vfeat; }
-    .vcard--v02   { grid-area: v02; }
-    .vcard--v03   { grid-area: v03; }
-    .vcard--v04   { grid-area: v04; }
-    .vcard--v05   { grid-area: v05; }
-    .vcard--vbot  { grid-area: vbot; }
-
-    @media (max-width: 760px) {
-      .values-grid {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: none;
-        grid-template-areas: none;
-      }
-      .vcard--feat, .vcard--v02, .vcard--v03,
-      .vcard--v04, .vcard--v05, .vcard--vbot { grid-area: auto; }
-      .vcard--vbot { grid-column: span 2; }
-    }
-    @media (max-width: 480px) {
-      .values-grid { grid-template-columns: 1fr; }
-      .vcard--vbot { grid-column: span 1; }
-    }
-
-    /* Base value card */
-    .vcard {
-      background: var(--surface);
-      padding: 1.75rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      transition: background 0.2s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .vcard:hover { background: var(--surface-2); }
-
-    /* Featured wide card */
-    .vcard--feat {
-      background: var(--bg-dark);
-      padding: 2.25rem 2rem;
-      flex-direction: row;
-      align-items: flex-end;
-      gap: 2rem;
-    }
-    .vcard--feat:hover { background: #232220; }
-    .vcard--feat-body { flex: 1; }
-
-    /* Bottom strip — accent bar */
-    .vcard--vbot {
-      background: var(--accent);
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.5rem 2rem;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-    .vcard--vbot:hover { background: var(--accent-dark, #c9a100); }
-    .vcard--vbot .vcard-title { color: var(--accent-text); font-size: 1rem; margin: 0; }
-    .vcard--vbot .vcard-desc  { color: rgba(0,0,0,0.55); font-size: 0.84rem; margin: 0; max-width: 52ch; }
-
-    /* Icon — no yellow square, just bare icon with accent color */
-    .vcard-icon {
-      width: 32px;
-      height: 32px;
-      color: var(--accent);
-      flex-shrink: 0;
-      margin-bottom: 0.25rem;
-    }
-    .vcard-icon svg { width: 100%; height: 100%; }
-    .vcard--feat .vcard-icon {
-      width: 48px;
-      height: 48px;
-      color: rgba(240,192,0,0.6);
-      align-self: flex-start;
-      margin-bottom: 0;
-    }
-    .vcard--vbot .vcard-icon {
-      color: rgba(0,0,0,0.45);
-      width: 28px;
-      height: 28px;
-      margin-bottom: 0;
-      flex-shrink: 0;
-    }
-
-    /* Ghost number in featured */
-    .vcard--feat .vcard-ghost {
-      position: absolute;
-      right: -0.1em;
-      bottom: -0.2em;
-      font-family: var(--font-display);
-      font-size: clamp(5rem, 12vw, 9rem);
-      font-weight: 700;
-      line-height: 1;
-      letter-spacing: -0.04em;
-      color: rgba(240,192,0,0.06);
-      pointer-events: none;
-      user-select: none;
-    }
-
-    .vcard-title {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      color: var(--text);
-      line-height: 1.2;
-    }
-    .vcard--feat .vcard-title {
-      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-      color: var(--text-inv);
-      letter-spacing: -0.025em;
-    }
-
-    .vcard-desc {
-      font-size: 0.84rem;
-      color: var(--text-muted);
-      line-height: 1.58;
-    }
-    .vcard--feat .vcard-desc {
-      color: rgba(245,244,240,0.45);
-      font-size: 0.88rem;
-      max-width: 40ch;
-    }
-
-    /* ── Areas ── */
-    .areas-grid {
-      columns: 3 200px;
-      column-gap: 1.5rem;
-      margin-top: 2rem;
-    }
-    .areas-grid li {
-      break-inside: avoid;
-      list-style: none;
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      padding: 0.35rem 0;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .areas-grid li::before {
-      content: '';
-      display: block;
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--accent);
-      flex-shrink: 0;
-    }
-
-    /* ── Partner band ── */
-    .partner-band {
-      background: var(--bg-dark);
-      padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 5vw, 3.5rem);
-    }
-    .partner-inner {
-      max-width: 1160px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-    .partner-text h3 {
-      font-family: var(--font-display);
-      font-size: clamp(1.4rem, 3vw, 2rem);
-      font-weight: 600;
-      color: var(--text-inv);
-      letter-spacing: -0.02em;
-      margin-bottom: 0.6rem;
-    }
-    .partner-text p {
-      font-size: 0.9rem;
-      color: rgba(245,244,240,0.45);
-      max-width: 44ch;
-      line-height: 1.6;
-    }
-    .partner-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--accent);
-      color: var(--accent-text);
-      font-family: var(--font-display);
-      font-size: 0.9rem;
-      font-weight: 600;
-      padding: 0.7rem 1.5rem;
-      border-radius: var(--radius-sm);
-      white-space: nowrap;
-      transition: background 0.18s ease, transform 0.18s ease;
-    }
-    .partner-link:hover { background: var(--accent-dark); transform: translateY(-1px); }
-
-    /* ── Contact info ── */
-    .contact-info-band {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-    }
-    .contact-info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .contact-info-item { display: flex; flex-direction: column; gap: 0.3rem; }
-    .contact-info-label {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-faint);
-    }
-    .contact-info-value {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--text);
-    }
-    .contact-info-value a { color: var(--accent); text-decoration: none; }
-    .contact-info-value a:hover { text-decoration: underline; }
-  </style>
 </head>
 <body class="page-body">
 
@@ -608,249 +49,132 @@
     <a href="kontakt.html" class="nav-cta">Kostenlos anfragen</a>
   </div>
 
-  <!-- Hero -->
-  <div class="hero-band">
-    <div class="hero-band-inner">
-      <div>
-        <p class="hero-eyebrow">Über uns</p>
-        <h1 class="hero-title">Wir räumen auf.<br><em>Für Sie.</em></h1>
-        <p class="hero-sub">
-          In Wunstorf, Garbsen, Hannover, Bad Nenndorf, Stadthagen, Barsinghausen
-          und Neustadt am Rübenberge für Sie unterwegs.
-        </p>
-      </div>
-      <div class="hero-badge">
-        <div class="hero-badge-num">10+</div>
-        <div class="hero-badge-label">Jahre<br>Erfahrung</div>
-      </div>
-    </div>
-  </div>
+  <main>
 
-  <div class="stripe-divider"></div>
-
-  <!-- LEISTUNGEN -->
-  <div class="leistungen-section">
-    <p class="eyebrow reveal">Was wir anbieten</p>
-    <h2 class="section-heading reveal reveal-delay-1">Unsere Leistungen</h2>
-
-    <div class="leistungen-grid">
-
-      <div class="lcard lcard--featured reveal">
-        <span class="lcard-num">01</span>
-        <span class="lcard-tag">Kernleistung</span>
-        <h3 class="lcard-title">Wohnungs&shy;auflösung &amp; Haushalts&shy;auflösung</h3>
-        <p class="lcard-desc">Komplette Räumung von Wohnungen, Häusern und Restbauernhöfen — inklusive Keller, Dachboden und Nebenräumen. Wir übergeben besenrein.</p>
-        <span class="lcard-pill">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          Besenrein übergeben
-        </span>
-      </div>
-
-      <div class="lcard lcard--c02 reveal">
-        <span class="lcard-num">02</span>
-        <span class="lcard-tag">Kleinaufträge</span>
-        <h3 class="lcard-title">Entrümpelung</h3>
-        <p class="lcard-desc">Keller, Garage, Gartenhaus, Schuppen — auch Einzelobjekte werden fachgerecht entsorgt.</p>
-      </div>
-
-      <div class="lcard lcard--c03 reveal reveal-delay-1">
-        <span class="lcard-num">03</span>
-        <span class="lcard-tag">Außenbereiche</span>
-        <h3 class="lcard-title">Garten &amp; Terrasse</h3>
-        <p class="lcard-desc">Balkon, Schrebergarten, Wintergarten, Gartenhaus — vollständig geräumt und entsorgt.</p>
-      </div>
-
-      <div class="lcard lcard--c04 reveal reveal-delay-1">
-        <span class="lcard-num">04</span>
-        <span class="lcard-tag">Schwierige Fälle</span>
-        <h3 class="lcard-title">Messie &amp; Sonderfälle</h3>
-        <p class="lcard-desc">Diskret, ohne Wertung. Messie-Wohnungen und Mietnomaden-Schäden sind kein Problem.</p>
-      </div>
-
-      <div class="lcard lcard--c05 reveal reveal-delay-2">
-        <span class="lcard-num">05</span>
-        <span class="lcard-tag">Kostenvorteil</span>
-        <h3 class="lcard-title">Wertausgleich</h3>
-        <p class="lcard-desc">Noch verwertbare Möbel reduzieren Ihre Kosten direkt beim Angebot.</p>
-      </div>
-
-      <div class="lcard lcard--c06 reveal">
-        <span class="lcard-num">06</span>
-        <span class="lcard-tag">Fernauftrag</span>
-        <h3 class="lcard-title">Schlüssel&shy;übergabe-Service</h3>
-        <p class="lcard-desc">Sie wohnen weit weg? Kein Problem — wir übernehmen Schlüssel und geben nach der Räumung zurück.</p>
-      </div>
-
-      <div class="lcard lcard--cta reveal reveal-delay-1">
-        <span class="lcard-cta-label">Kostenlos &amp; unverbindlich</span>
-        <p class="lcard-cta-title">Jetzt Besichtigung<br>vereinbaren</p>
-        <div class="lcard-cta-btns">
-          <a href="tel:015150194741" class="lcard-cta-btn lcard-cta-btn--primary">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 9.81 19.79 19.79 0 0 1 1.61 2.22 2 2 0 0 1 3.6.04h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 7.91a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            0151 / 501 94 741
-          </a>
-          <a href="kontakt.html" class="lcard-cta-btn lcard-cta-btn--ghost">
-            Online anfragen &rarr;
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ═══════════════════════════════════
-       WERTE — 3-col bento, explicit areas
-       Row 1: [Diskretion wide] [Zuverlässigkeit]
-       Row 2: [Besenrein] [Regional] [Umwelt]
-       Row 3: [Fairer Preis — full-width accent strip]
-  ═══════════════════════════════════ -->
-  <div class="values-section">
-    <div class="section">
-      <p class="eyebrow reveal">Unsere Werte</p>
-      <h2 class="section-heading reveal reveal-delay-1">Was uns antreibt</h2>
-
-      <div class="values-grid">
-
-        <!-- Diskretion — featured wide -->
-        <div class="vcard vcard--feat reveal">
-          <div class="vcard-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <div class="vcard--feat-body">
-            <div class="vcard-title">Diskretion</div>
-            <div class="vcard-desc">Jeder Auftrag wird vertraulich behandelt — egal ob Erbschaftsauflösung, Messie-Wohnung oder schwieriger Sonderfall. Was bei uns bleibt, bleibt bei uns.</div>
-          </div>
-          <span class="vcard-ghost">01</span>
-        </div>
-
-        <!-- Zuverlässigkeit -->
-        <div class="vcard vcard--v02 reveal reveal-delay-1">
-          <div class="vcard-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <div class="vcard-title">Zuverlässigkeit</div>
-          <div class="vcard-desc">Wir kommen zum vereinbarten Termin und melden uns innerhalb von 24 Stunden nach Ihrer Anfrage.</div>
-        </div>
-
-        <!-- Besenrein -->
-        <div class="vcard vcard--v03 reveal">
-          <div class="vcard-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          </div>
-          <div class="vcard-title">Besenrein</div>
-          <div class="vcard-desc">Wir verlassen das Objekt sauber, geräumt und übergabebereit — so, wie der nächste Nutzer es erwartet.</div>
-        </div>
-
-        <!-- Regional -->
-        <div class="vcard vcard--v04 reveal reveal-delay-1">
-          <div class="vcard-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </div>
-          <div class="vcard-title">Regional verwurzelt</div>
-          <div class="vcard-desc">Wunstorf, Hannover, Garbsen, Neustadt a. Rbge. — wir kennen die Region und sind schnell vor Ort.</div>
-        </div>
-
-        <!-- Umweltbewusst -->
-        <div class="vcard vcard--v05 reveal reveal-delay-2">
-          <div class="vcard-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>
-          </div>
-          <div class="vcard-title">Umweltbewusst</div>
-          <div class="vcard-desc">Verwertbares bleibt im Kreislauf. Die Deponie ist für uns die letzte Option, nicht die erste.</div>
-        </div>
-
-        <!-- Fairer Preis — full-width accent strip -->
-        <div class="vcard vcard--vbot reveal">
-          <div class="vcard-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          </div>
-          <div>
-            <div class="vcard-title">Fairer Preis</div>
-            <div class="vcard-desc">Kostenlose Besichtigung, transparentes Festpreisangebot — ohne versteckte Kosten oder Nachforderungen.</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- Areas -->
-  <div class="section">
-    <p class="eyebrow reveal">Einsatzgebiet</p>
-    <h2 class="section-heading reveal reveal-delay-1">Unser Einzugsgebiet</h2>
-    <p class="body-text reveal reveal-delay-2">
-      Wir bieten Wohnungsauflösungen und Entrümpelungen in folgenden Orten an:
+  <section class="page-intro" aria-labelledby="pageTitle">
+    <h1 class="page-title" id="pageTitle">Ein Betrieb aus Wunstorf für die Region Hannover</h1>
+    <p class="page-lead">
+      Hinter Stiebeiner Entrümpelung steht Jens Stiebeiner. Wir lösen Wohnungen und Häuser auf,
+      entrümpeln Keller und Dachböden und übernehmen auch schwierige Fälle wie Messie-Wohnungen.
     </p>
-    <ul class="areas-grid reveal reveal-delay-3">
-      <li>Wunstorf</li><li>Bad Nenndorf</li><li>Barsinghausen</li>
-      <li>Neustadt a. Rbge.</li><li>Stadthagen</li><li>Garbsen</li>
-      <li>Berenbostel</li><li>Havelse</li><li>Hannover</li>
-      <li>Steinhude</li><li>Hagenburg</li><li>Haste</li>
-      <li>Idensen</li><li>Mesmerode</li><li>Schloss Ricklingen</li>
-      <li>Luthe</li><li>Osterwald</li><li>Groß Munzel</li>
-      <li>Frielingen</li><li>Horst</li><li>Ronnenberg</li>
-      <li>Bokeloh</li><li>Blumenau</li><li>Altenhagen</li>
-      <li>Mardorf</li><li>Landringhausen</li><li>Poggenhagen</li>
-      <li>Bordenau</li><li>Eilvese</li><li>Suttorf</li>
-      <li>Basse</li><li>Himmelreich</li><li>Hagen</li>
-      <li>Wulfelade</li><li>Mariensee</li><li>Lathwehren</li>
-      <li>Bantorf</li><li>Bad Rehburg</li><li>Winzlar</li>
-      <li>Rehburg-Loccum</li><li>Auhagen</li><li>Garbsen-Stelingen</li>
-      <li>Garbsen-Osterwald</li>
-    </ul>
-  </div>
+  </section>
 
-  <!-- Partner -->
-  <div class="partner-band">
-    <div class="partner-inner">
-      <div class="partner-text reveal">
-        <h3>Unser Partner:<br>Kill-Tec Schädlingsbekämpfung</h3>
-        <p>Für Fälle, die mehr erfordern als eine Räumung, arbeiten wir mit Kill-Tec Schädlingsbekämpfung zusammen.</p>
-      </div>
-      <a href="https://www.kill-tec.de" target="_blank" rel="noopener noreferrer" class="partner-link reveal reveal-delay-1">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        Kill-Tec.de besuchen
-      </a>
+  <section class="block" aria-labelledby="arbeitTitle">
+    <div class="block-grid">
+      <h2 class="block-title" id="arbeitTitle">Wie wir arbeiten</h2>
+      <ul class="rows">
+        <li>
+          <span class="rows-term">Diskret</span>
+          <span class="rows-desc">Jeder Auftrag wird vertraulich behandelt, ob Erbschaft, Messie-Wohnung oder schwieriger Sonderfall. Was bei uns bleibt, bleibt bei uns.</span>
+        </li>
+        <li>
+          <span class="rows-term">Zuverlässig</span>
+          <span class="rows-desc">Wir kommen zum vereinbarten Termin und melden uns innerhalb von 24 Stunden nach Ihrer Anfrage.</span>
+        </li>
+        <li>
+          <span class="rows-term">Besenrein</span>
+          <span class="rows-desc">Wir verlassen das Objekt geräumt, sauber und übergabebereit, so wie der nächste Nutzer es erwartet.</span>
+        </li>
+        <li>
+          <span class="rows-term">Zum Festpreis</span>
+          <span class="rows-desc">Kostenlose Besichtigung und ein Festpreisangebot, ohne versteckte Kosten oder Nachforderungen.</span>
+        </li>
+        <li>
+          <span class="rows-term">Weitergeben statt wegwerfen</span>
+          <span class="rows-desc">Verwertbares bleibt im Kreislauf. Die Deponie ist für uns die letzte Option, nicht die erste.</span>
+        </li>
+      </ul>
     </div>
-  </div>
+  </section>
 
-  <!-- Contact info -->
-  <div class="contact-info-band">
-    <div class="section">
-      <p class="eyebrow reveal">So finden Sie uns</p>
-      <div class="contact-info-grid reveal reveal-delay-1">
-        <div class="contact-info-item">
-          <span class="contact-info-label">Adresse</span>
-          <span class="contact-info-value">Jens Stiebeiner<br>Manhorner Str. 4<br>31515 Wunstorf</span>
-        </div>
-        <div class="contact-info-item">
-          <span class="contact-info-label">Telefon</span>
-          <span class="contact-info-value"><a href="tel:015150194741">0151 / 501 94 741</a></span>
-        </div>
-        <div class="contact-info-item">
-          <span class="contact-info-label">E-Mail</span>
-          <span class="contact-info-value"><a href="mailto:jensstiebeiner@yahoo.de">jensstiebeiner@yahoo.de</a></span>
-        </div>
+  <section class="block" aria-labelledby="gebietTitle">
+    <div class="block-grid">
+      <div>
+        <h2 class="block-title" id="gebietTitle">Wo wir arbeiten</h2>
+        <p class="block-intro">Wir kennen die Region und sind schnell vor Ort. Wohnungsauflösungen und Entrümpelungen bieten wir in diesen Orten an:</p>
+      </div>
+      <div>
+        <ul class="places">
+          <li>Wunstorf</li>
+          <li>Bad Nenndorf</li>
+          <li>Barsinghausen</li>
+          <li>Neustadt a. Rbge.</li>
+          <li>Stadthagen</li>
+          <li>Garbsen</li>
+          <li>Berenbostel</li>
+          <li>Havelse</li>
+          <li>Hannover</li>
+          <li>Steinhude</li>
+          <li>Hagenburg</li>
+          <li>Haste</li>
+          <li>Idensen</li>
+          <li>Mesmerode</li>
+          <li>Schloss Ricklingen</li>
+          <li>Luthe</li>
+          <li>Osterwald</li>
+          <li>Groß Munzel</li>
+          <li>Frielingen</li>
+          <li>Horst</li>
+          <li>Ronnenberg</li>
+          <li>Bokeloh</li>
+          <li>Blumenau</li>
+          <li>Altenhagen</li>
+          <li>Mardorf</li>
+          <li>Landringhausen</li>
+          <li>Poggenhagen</li>
+          <li>Bordenau</li>
+          <li>Eilvese</li>
+          <li>Suttorf</li>
+          <li>Basse</li>
+          <li>Himmelreich</li>
+          <li>Hagen</li>
+          <li>Wulfelade</li>
+          <li>Mariensee</li>
+          <li>Lathwehren</li>
+          <li>Bantorf</li>
+          <li>Bad Rehburg</li>
+          <li>Winzlar</li>
+          <li>Rehburg-Loccum</li>
+          <li>Auhagen</li>
+          <li>Garbsen-Stelingen</li>
+          <li>Garbsen-Osterwald</li>
+        </ul>
+        <p class="places-note">Ihr Ort fehlt? Fragen Sie einfach.</p>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- CTA band -->
-  <div class="dark-band">
-    <div class="section" style="text-align:center;">
-      <p class="eyebrow reveal" style="justify-content:center;">Kostenlos &amp; unverbindlich</p>
-      <h2 class="display-heading reveal reveal-delay-1" style="color:var(--text-inv);margin-bottom:1.5rem;">Jetzt Besichtigung vereinbaren</h2>
-      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;" class="reveal reveal-delay-2">
-        <a href="tel:015150194741" style="display:inline-flex;align-items:center;gap:0.6rem;background:var(--accent);color:var(--accent-text);font-family:var(--font-display);font-size:0.95rem;font-weight:600;padding:0.85rem 1.75rem;border-radius:var(--radius-sm);transition:background 0.18s,transform 0.18s;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 9.81 19.79 19.79 0 0 1 1.61 2.22 2 2 0 0 1 3.6.04h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 7.91a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          0151 / 501 94 741
-        </a>
-        <a href="kontakt.html" style="display:inline-flex;align-items:center;gap:0.6rem;background:rgba(255,255,255,0.08);color:var(--text-inv);font-family:var(--font-display);font-size:0.95rem;font-weight:600;padding:0.85rem 1.75rem;border-radius:var(--radius-sm);border:1px solid rgba(255,255,255,0.15);transition:background 0.18s;">
-          Online anfragen &rarr;
-        </a>
+  <section class="block" aria-labelledby="partnerTitle">
+    <div class="block-grid">
+      <h2 class="block-title" id="partnerTitle">Unser Partner</h2>
+      <ul class="rows">
+        <li>
+          <span class="rows-term">Kill-Tec Schädlingsbekämpfung</span>
+          <span class="rows-desc">Für Fälle, die mehr erfordern als eine Räumung, arbeiten wir mit Kill-Tec zusammen. <a href="https://www.kill-tec.de" target="_blank" rel="noopener noreferrer">kill-tec.de</a></span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="closing" aria-labelledby="closingTitle">
+    <div class="block">
+      <div class="block-grid">
+        <h2 class="block-title" id="closingTitle">Besichtigung vereinbaren</h2>
+        <div>
+          <p class="closing-text">Am schnellsten geht es am Telefon. Wenn Sie lieber schreiben, melden wir uns innerhalb von 24 Stunden.</p>
+          <div class="closing-actions">
+            <a class="call-btn" href="tel:+4915150194741">
+              <span class="call-btn-label">Anrufen</span>
+              <span class="call-btn-number">0151 / 501 94 741</span>
+            </a>
+            <a class="text-link" href="kontakt.html">Anfrage schreiben</a>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  </main>
 
   <!-- Footer -->
   <footer class="site-footer">
@@ -868,10 +192,6 @@
     const ham = document.getElementById('navHamburger');
     const drawer = document.getElementById('navDrawer');
     ham.addEventListener('click', () => { ham.classList.toggle('open'); ham.setAttribute('aria-expanded', drawer.classList.toggle('open')); });
-    const obs = new IntersectionObserver((entries) =>
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }),
-      { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   </script>
 </body>
 </html>
