@@ -16,10 +16,9 @@
   <style>
     /* ───────────────────────────────────────────────────
        HERO — nur Typografie, kein Bild.
-       Akzentfarbe nur auf der Handlung (Anrufen).
     ─────────────────────────────────────────────────── */
     .hero {
-      padding: clamp(3rem, 9vw, 7.5rem) clamp(1.25rem, 5vw, 3.5rem) clamp(2.5rem, 5vw, 4rem);
+      padding: clamp(3rem, 9vw, 7.5rem) clamp(1.25rem, 5vw, 3.5rem) clamp(1rem, 2vw, 1.5rem);
       max-width: 1160px;
       margin: 0 auto;
     }
@@ -30,7 +29,6 @@
       font-stretch: 92%;
       line-height: 1.02;
       letter-spacing: -0.03em;
-      color: var(--text);
       max-width: 15ch;
       text-wrap: balance;
     }
@@ -53,35 +51,6 @@
       align-items: flex-start;
       gap: 0.9rem;
     }
-    .hero-call {
-      display: inline-flex;
-      flex-direction: column;
-      gap: 0.1rem;
-      background: var(--accent);
-      color: var(--accent-text);
-      padding: 0.85rem 1.5rem 0.95rem;
-      border-radius: var(--radius-sm);
-      transition: background 0.18s ease;
-    }
-    .hero-call:hover { background: var(--accent-dark); }
-    .hero-call-label {
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-    .hero-call-number {
-      font-size: clamp(1.4rem, 2.4vw, 1.75rem);
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      font-variant-numeric: tabular-nums;
-      white-space: nowrap;
-    }
-    .hero-write {
-      font-weight: 600;
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 4px;
-    }
-    .hero-write:hover { text-decoration-thickness: 2px; }
     .hero-note {
       font-size: 0.85rem;
       color: var(--text-muted);
@@ -118,141 +87,31 @@
     }
 
     /* ───────────────────────────────────────────────────
-       LEISTUNGEN — 2×2 highlight grid + link
-       4 key services on homepage; full list on Über uns
+       ABSCHLUSS — dunkel, gleiche Aktion wie im Hero
     ─────────────────────────────────────────────────── */
-    .leistungen-section {
-      padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 3.5rem);
-      max-width: 1160px;
-      margin: 0 auto;
-    }
-
-    /* 2-col × 2-row highlight grid — no orphans ever */
-    .highlight-grid {
-      margin-top: 2.5rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 2px;
-      background: rgba(0,0,0,0.13);
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-    }
-    @media (max-width: 560px) {
-      .highlight-grid { grid-template-columns: 1fr; }
-    }
-
-    .hcard {
-      background: var(--surface);
-      padding: 2rem 1.75rem 1.75rem;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      min-height: 200px;
-      transition: background 0.22s ease;
-    }
-    .hcard:hover { background: var(--surface-2); }
-
-    /* first card — dark featured */
-    .hcard:first-child {
+    .closing {
       background: var(--bg-dark);
-      min-height: 240px;
-    }
-    .hcard:first-child:hover { background: #232220; }
-
-    .hcard-num {
-      position: absolute;
-      top: -0.15em;
-      right: 0.15em;
-      font-family: var(--font-display);
-      font-size: clamp(4.5rem, 9vw, 7rem);
-      font-weight: 700;
-      line-height: 1;
-      letter-spacing: -0.04em;
-      color: rgba(0,0,0,0.055);
-      pointer-events: none;
-      user-select: none;
-    }
-    .hcard:first-child .hcard-num { color: rgba(240,192,0,0.08); }
-
-    .hcard-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--text-faint);
-      margin-bottom: 0.65rem;
-    }
-    .hcard:first-child .hcard-tag { color: rgba(240,192,0,0.55); }
-    .hcard-tag::before {
-      content: '';
-      display: block;
-      width: 12px;
-      height: 1.5px;
-      background: currentColor;
-      border-radius: 2px;
-    }
-
-    .hcard-title {
-      font-family: var(--font-display);
-      font-size: clamp(1rem, 2vw, 1.3rem);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-      color: var(--text);
-    }
-    .hcard:first-child .hcard-title {
       color: var(--text-inv);
-      font-size: clamp(1.3rem, 2.8vw, 1.9rem);
     }
-
-    .hcard-desc {
-      margin-top: 0.5rem;
-      font-size: 0.84rem;
-      line-height: 1.58;
-      color: var(--text-muted);
+    .closing .block-grid {
+      border-top-color: rgba(245, 244, 240, 0.35);
+      align-items: end;
     }
-    .hcard:first-child .hcard-desc {
-      color: rgba(245,244,240,0.45);
-      max-width: 36ch;
+    .closing .block-title {
+      font-size: clamp(2rem, 4.5vw, 3.5rem);
     }
-
-    /* "Alle Leistungen" link row */
-    .leistungen-mehr {
+    .closing-text {
+      line-height: 1.6;
+      color: rgba(245, 244, 240, 0.72);
+      max-width: 44ch;
+    }
+    .closing-actions {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-top: 1.5rem;
       flex-wrap: wrap;
-    }
-    .leistungen-mehr-text {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-    .leistungen-mehr-text strong {
-      color: var(--text);
-      font-weight: 600;
-    }
-    .leistungen-mehr-link {
-      display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      font-family: var(--font-display);
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: var(--accent);
-      text-decoration: none;
-      white-space: nowrap;
-      transition: gap 0.18s ease;
+      gap: 1.25rem 2rem;
+      margin-top: 1.75rem;
     }
-    .leistungen-mehr-link:hover { gap: 0.65rem; }
-    .leistungen-mehr-link svg { flex-shrink: 0; }
   </style>
   <script type="application/ld+json">
   {
@@ -318,11 +177,11 @@
         vom Keller bis zum Dachboden. Am Ende übergeben wir besenrein.
       </p>
       <div class="hero-contact">
-        <a class="hero-call" href="tel:+4915150194741">
-          <span class="hero-call-label">Anrufen</span>
-          <span class="hero-call-number">0151 / 501 94 741</span>
+        <a class="call-btn" href="tel:+4915150194741">
+          <span class="call-btn-label">Anrufen</span>
+          <span class="call-btn-number">0151 / 501 94 741</span>
         </a>
-        <a class="hero-write" href="kontakt.html">Oder Anfrage schreiben</a>
+        <a class="text-link" href="kontakt.html">Oder Anfrage schreiben</a>
         <p class="hero-note">Rückmeldung innerhalb von 24 Stunden.</p>
       </div>
     </div>
@@ -347,113 +206,111 @@
     </dl>
   </section>
 
-  <!-- ═════════════════════════════════════
-       LEISTUNGEN — 4 highlights only.
-       Full list lives on Über uns — linked below.
-  ═════════════════════════════════════ -->
-  <div class="leistungen-section">
-    <p class="eyebrow reveal">Was wir anbieten</p>
-    <h2 class="section-heading reveal reveal-delay-1">Professionelle Entrümpelung<br>aus einer Hand</h2>
-
-    <div class="highlight-grid">
-
-      <div class="hcard reveal">
-        <span class="hcard-num">01</span>
-        <span class="hcard-tag">Kernleistung</span>
-        <h3 class="hcard-title">Wohnungs- &amp; Haushaltsauflösung</h3>
-        <p class="hcard-desc">Komplette Räumung von Wohnungen, Häusern und Resthöfen — inklusive Keller, Dachboden, Nebenräume. Besenrein übergeben.</p>
+  <section class="block" aria-labelledby="leistungenTitle">
+    <div class="block-grid">
+      <div>
+        <h2 class="block-title" id="leistungenTitle">Was wir räumen</h2>
+        <p class="block-intro">Was noch gut ist, geben wir weiter. Die Deponie ist für uns die letzte Option, nicht die erste.</p>
       </div>
-
-      <div class="hcard reveal reveal-delay-1">
-        <span class="hcard-num">02</span>
-        <span class="hcard-tag">Schwierige Fälle</span>
-        <h3 class="hcard-title">Messie &amp; Sonderfälle</h3>
-        <p class="hcard-desc">Diskret, ohne Wertung — Messie-Wohnungen und Mietnomaden-Schäden sind kein Problem.</p>
-      </div>
-
-      <div class="hcard reveal reveal-delay-1">
-        <span class="hcard-num">03</span>
-        <span class="hcard-tag">Kostenvorteil</span>
-        <h3 class="hcard-title">Wertausgleich</h3>
-        <p class="hcard-desc">Verwertbare Möbel & Gegenstände werden angerechnet — Ihr Angebot wird direkt günstiger.</p>
-      </div>
-
-      <div class="hcard reveal reveal-delay-2">
-        <span class="hcard-num">04</span>
-        <span class="hcard-tag">Fernauftrag</span>
-        <h3 class="hcard-title">Schlüsselübergabe-Service</h3>
-        <p class="hcard-desc">Sie müssen nicht vor Ort sein — wir übernehmen Schlüssel und geben sie nach der Räumung zurück.</p>
-      </div>
-
+      <ul class="rows">
+        <li>
+          <span class="rows-term">Wohnungs- und Haushaltsauflösung</span>
+          <span class="rows-desc">Wohnungen, Häuser und Resthöfe, inklusive Keller, Dachboden und Nebenräumen.</span>
+        </li>
+        <li>
+          <span class="rows-term">Entrümpelung</span>
+          <span class="rows-desc">Keller, Garage, Gartenhaus oder Schuppen. Auch einzelne Gegenstände.</span>
+        </li>
+        <li>
+          <span class="rows-term">Messie-Wohnungen und Sonderfälle</span>
+          <span class="rows-desc">Diskret und ohne Wertung. Auch Schäden durch Mietnomaden.</span>
+        </li>
+        <li>
+          <span class="rows-term">Garten und Terrasse</span>
+          <span class="rows-desc">Balkon, Schrebergarten, Wintergarten.</span>
+        </li>
+        <li>
+          <span class="rows-term">Altmetall</span>
+          <span class="rows-desc">Wir holen Altmetall bei Ihnen ab.</span>
+        </li>
+      </ul>
     </div>
+  </section>
 
-    <div class="leistungen-mehr reveal reveal-delay-2">
-      <p class="leistungen-mehr-text">
-        Auch: <strong>Entrümpelung, Garten & Terrasse, Altmetall-Abholung, zertifizierte Entsorgung</strong>
-      </p>
-      <a href="ueber-uns.html#leistungen" class="leistungen-mehr-link">
-        Alle Leistungen ansehen
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
+  <section class="block" aria-labelledby="ablaufTitle">
+    <div class="block-grid">
+      <h2 class="block-title" id="ablaufTitle">So läuft ein Auftrag ab</h2>
+      <ol class="rows">
+        <li>
+          <span class="rows-term"><span class="rows-num">1</span>Anfrage</span>
+          <span class="rows-desc">Sie rufen an oder schreiben uns. Eine grobe Beschreibung reicht.</span>
+        </li>
+        <li>
+          <span class="rows-term"><span class="rows-num">2</span>Besichtigung und Festpreis</span>
+          <span class="rows-desc">Wir sehen uns alles vor Ort an, kostenlos und unverbindlich. Danach bekommen Sie einen Festpreis.</span>
+        </li>
+        <li>
+          <span class="rows-term"><span class="rows-num">3</span>Räumung und Übergabe</span>
+          <span class="rows-desc">Wir räumen zum vereinbarten Termin und übergeben besenrein. Den Schlüssel können Sie uns überlassen.</span>
+        </li>
+      </ol>
     </div>
-  </div>
+  </section>
 
-  <!-- Einzugsgebiet -->
-  <div style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
-    <div class="section">
-      <p class="eyebrow reveal">Einzugsgebiet</p>
-      <h2 class="section-heading reveal reveal-delay-1">In Ihrer Nähe</h2>
-      <p class="body-text reveal reveal-delay-2" style="margin-top:0.75rem;">
-        Wir sind in Wunstorf und der gesamten Region Hannover für Sie im Einsatz.
-      </p>
-      <div class="region-grid reveal reveal-delay-2">
-        <span class="region-chip">Wunstorf</span>
-        <span class="region-chip">Barsinghausen</span>
-        <span class="region-chip">Bad Nenndorf</span>
-        <span class="region-chip">Garbsen</span>
-        <span class="region-chip">Neustadt a. Rbge.</span>
-        <span class="region-chip">Mardorf</span>
-        <span class="region-chip">Bad Rehburg</span>
-        <span class="region-chip">Rehburg-Loccum</span>
-        <span class="region-chip">Hohnhorst</span>
-        <span class="region-chip">Hannover</span>
-        <span class="region-chip">Steinhude</span>
-        <span class="region-chip">Hagenburg</span>
-        <span class="region-chip">Stadthagen</span>
-        <span class="region-chip">Ronnenberg</span>
-        <span class="region-chip">Berenbostel</span>
-        <span class="region-chip">Luthe</span>
-        <span class="region-chip">Poggenhagen</span>
-        <span class="region-chip">Bordenau</span>
-        <span class="region-chip">Eilvese</span>
-        <span class="region-chip">Mariensee</span>
-        <span class="region-chip">Bokeloh</span>
-        <span class="region-chip">Blumenau</span>
-        <span class="region-chip">Winzlar</span>
-        <span class="region-chip">& alle Umgemeinden</span>
+  <section class="block" aria-labelledby="gebietTitle">
+    <div class="block-grid">
+      <div>
+        <h2 class="block-title" id="gebietTitle">Wo wir arbeiten</h2>
+        <p class="block-intro">In Wunstorf und der gesamten Region Hannover, unter anderem hier:</p>
       </div>
-    </div>
-  </div>
-
-  <!-- CTA band -->
-  <div class="dark-band">
-    <div class="section" style="text-align:center;">
-      <p class="eyebrow reveal" style="justify-content:center;">Kostenlos & unverbindlich</p>
-      <h2 class="display-heading reveal reveal-delay-1" style="color:var(--text-inv);margin-bottom:1.5rem;">Jetzt Besichtigung vereinbaren</h2>
-      <p class="body-text reveal reveal-delay-2" style="margin:0 auto 2rem;color:rgba(245,244,240,0.55);">
-        Rufen Sie uns an oder schreiben Sie uns — wir melden uns innerhalb von 24 Stunden.
-      </p>
-      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;" class="reveal reveal-delay-3">
-        <a href="tel:015150194741" style="display:inline-flex;align-items:center;gap:0.6rem;background:var(--accent);color:var(--accent-text);font-family:var(--font-display);font-size:0.95rem;font-weight:600;padding:0.85rem 1.75rem;border-radius:var(--radius-sm);transition:background 0.18s ease;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 9.81 19.79 19.79 0 0 1 1.61 2.22 2 2 0 0 1 3.6.04h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 7.91a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          0151 / 501 94 741
-        </a>
-        <a href="kontakt.html" style="display:inline-flex;align-items:center;gap:0.6rem;background:rgba(255,255,255,0.08);color:var(--text-inv);font-family:var(--font-display);font-size:0.95rem;font-weight:600;padding:0.85rem 1.75rem;border-radius:var(--radius-sm);border:1px solid rgba(255,255,255,0.15);transition:background 0.18s ease;">
-          Online anfragen &rarr;
-        </a>
+      <div>
+        <ul class="places">
+          <li>Wunstorf</li>
+          <li>Steinhude</li>
+          <li>Hagenburg</li>
+          <li>Garbsen</li>
+          <li>Berenbostel</li>
+          <li>Hannover</li>
+          <li>Ronnenberg</li>
+          <li>Barsinghausen</li>
+          <li>Bad Nenndorf</li>
+          <li>Hohnhorst</li>
+          <li>Stadthagen</li>
+          <li>Neustadt a. Rbge.</li>
+          <li>Mardorf</li>
+          <li>Bad Rehburg</li>
+          <li>Rehburg-Loccum</li>
+          <li>Winzlar</li>
+          <li>Luthe</li>
+          <li>Blumenau</li>
+          <li>Bokeloh</li>
+          <li>Poggenhagen</li>
+          <li>Bordenau</li>
+          <li>Eilvese</li>
+          <li>Mariensee</li>
+        </ul>
+        <p class="places-note">Und in den umliegenden Gemeinden. Ihr Ort fehlt? Fragen Sie einfach.</p>
       </div>
     </div>
-  </div>
+  </section>
+
+  <section class="closing" aria-labelledby="closingTitle">
+    <div class="block">
+      <div class="block-grid">
+        <h2 class="block-title" id="closingTitle">Besichtigung vereinbaren</h2>
+        <div>
+          <p class="closing-text">Am schnellsten geht es am Telefon. Wenn Sie lieber schreiben, melden wir uns innerhalb von 24 Stunden.</p>
+          <div class="closing-actions">
+            <a class="call-btn" href="tel:+4915150194741">
+              <span class="call-btn-label">Anrufen</span>
+              <span class="call-btn-number">0151 / 501 94 741</span>
+            </a>
+            <a class="text-link" href="kontakt.html">Anfrage schreiben</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   </main>
 
@@ -479,12 +336,6 @@
       ham.classList.toggle('open');
       ham.setAttribute('aria-expanded', drawer.classList.toggle('open'));
     });
-
-    const revealEls = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    revealEls.forEach(el => observer.observe(el));
   </script>
 </body>
 </html>

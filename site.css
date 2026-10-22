@@ -74,16 +74,12 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   align-items: center;
   justify-content: space-between;
   padding: 0 clamp(1.25rem, 4vw, 3rem);
-  /* Glassmorphism on the grey bg */
-  background: rgba(232, 232, 230, 0.82);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: var(--bg);
   border-bottom: 1px solid var(--border);
-  transition: background 0.3s ease;
+  transition: border-color 0.3s ease;
 }
 .site-nav.scrolled {
-  background: rgba(232, 232, 230, 0.96);
-  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  border-bottom-color: var(--border-heavy);
 }
 
 .nav-logo {
@@ -287,86 +283,118 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   background: var(--accent);
 }
 
-/* ── Cards / surfaces ────────────────────────────────────── */
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: clamp(1.25rem, 3vw, 2rem);
+/* ── Editorial blocks ────────────────────────────────────────
+ * Abschnitt = Linie oben, Überschrift links, Inhalt rechts.
+ * Keine Karten, keine Deko-Nummern, keine Eyebrows.
+ */
+.block {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 5vw, 3.5rem);
 }
-.card-dark {
-  background: var(--bg-dark);
-  color: var(--text-inv);
-  border-color: rgba(255,255,255,0.07);
-}
-
-/* ── Service list (home) ─────────────────────────────────── */
-.service-grid {
+.block + .block { padding-top: 0; } /* Abstand zwischen Abschnitten nur einmal */
+.block-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
-  gap: 1px;
-  background: var(--border-heavy);
-  border: 1px solid var(--border-heavy);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  margin-top: 2.5rem;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: 1.75rem 3rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--text);
 }
-.service-item {
-  background: var(--surface);
-  padding: 1.5rem 1.75rem;
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  transition: background 0.2s ease;
+@media (max-width: 760px) {
+  .block-grid { grid-template-columns: 1fr; }
 }
-.service-item:hover { background: var(--surface-2); }
-.service-icon {
-  width: 36px;
-  height: 36px;
-  background: var(--accent);
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-.service-icon svg { width: 18px; height: 18px; color: var(--accent-text); }
-.service-title {
+.block-title {
   font-family: var(--font-display);
-  font-size: 0.975rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  margin-bottom: 0.25rem;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700;
+  font-stretch: 92%;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
 }
-.service-desc {
-  font-size: 0.83rem;
+.block-intro {
+  margin-top: 1rem;
+  line-height: 1.6;
   color: var(--text-muted);
-  line-height: 1.5;
+  max-width: 34ch;
 }
 
-/* ── Region chips ────────────────────────────────────────── */
-.region-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 1.5rem;
+/* Liste mit Linien: Begriff links, Beschreibung rechts */
+.rows { list-style: none; }
+.rows > li {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  gap: 0.35rem 2rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--border-heavy);
 }
-.region-chip {
-  font-size: 0.8rem;
-  font-weight: 500;
+.rows > li:first-child { padding-top: 0.2rem; }
+.rows-term {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.rows-num {
+  display: inline-block;
+  min-width: 1.75em;
   color: var(--text-muted);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 0.35rem 0.75rem;
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  font-variant-numeric: tabular-nums;
 }
-.region-chip:hover {
+.rows-desc {
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+@media (max-width: 560px) {
+  .rows > li { grid-template-columns: 1fr; }
+}
+
+/* Ortsliste in Spalten */
+.places {
+  list-style: none;
+  columns: 3 9rem;
+  column-gap: 2rem;
+}
+.places li {
+  break-inside: avoid;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.places-note {
+  margin-top: 1rem;
+  color: var(--text-muted);
+}
+
+/* ── Aktionen ────────────────────────────────────────────── */
+/* Gelb nur hier: Anrufen ist die Haupthandlung der Seite */
+.call-btn {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.1rem;
   background: var(--accent);
   color: var(--accent-text);
-  border-color: var(--accent);
+  padding: 0.85rem 1.5rem 0.95rem;
+  border-radius: var(--radius-sm);
+  transition: background 0.18s ease;
 }
+.call-btn:hover { background: var(--accent-dark); }
+.call-btn-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.call-btn-number {
+  font-size: clamp(1.4rem, 2.4vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.text-link {
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+.text-link:hover { text-decoration-thickness: 2px; }
 
 /* ── Dark band (CTA strip) ───────────────────────────────── */
 .dark-band {
